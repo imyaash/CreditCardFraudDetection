@@ -33,7 +33,7 @@ dim(testdata)
 
 
 ## Fitting the logistic regression model
-LogisticModel <- glm(Class ~ ., testdata, family = binomial())
+LogisticModel <- glm(Class ~ ., trainingdata, family = binomial())
 summary(LogisticModel)
 plot(LogisticModel)
 
@@ -51,7 +51,7 @@ DecisionTreeModel <- rpart(Class ~ ., card_data, method = 'class')
 predictedValue <- predict(DecisionTreeModel, card_data, type = 'class')
 prob <- predict(DecisionTreeModel, card_data, type = 'prob')
 rpart.plot(DecisionTreeModel)
-
+mean(predictedValue==NewData$Class)
 
 ## Using Artificial Neural Network (Setting the threshold as 0.5)
 
